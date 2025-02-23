@@ -1,0 +1,109 @@
+﻿<Window x:Class="WarshipsWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarshipsWPF"
+        mc:Ignorable="d"
+        FontFamily ="./fonts/#Anthrope Personal Use Only"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="NoHoverButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid Name="MainMenu" Visibility="Visible">
+            <Grid.Background>
+                <ImageBrush ImageSource="/WarshipsWPF;component/images/mainbackground.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.ColumnSpan="3" Stretch="Uniform">
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="WARSHIPS" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="160" Foreground="White"/>
+            </Viewbox>
+            <Button Grid.Row="1" Grid.Column="1" Margin="50" FontSize="30" Click="Play_Click" BorderBrush="White" BorderThickness="1">
+                <Button.Background>
+                    <ImageBrush ImageSource="/images/button.jpg" Stretch="UniformToFill"/>
+                </Button.Background>
+                <Viewbox>
+                    <TextBlock Text="Play" Margin="10" Foreground="White"/>
+                </Viewbox>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="1" Margin="50" FontSize="30" BorderBrush="White" BorderThickness="1" Click="Quit_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/images/button.jpg" Stretch="UniformToFill"/>
+                </Button.Background>
+                <Viewbox>
+                    <TextBlock Text="Quit" Margin="10" Foreground="White"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+        <Grid Name="BoardPanel" Background="Gray" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" BorderBrush="Black" BorderThickness="0" Margin="10,40,10,40">
+                <Border.Background>
+                    <ImageBrush ImageSource="/images/boardbackground.jpg" Stretch="UniformToFill"/>
+                </Border.Background>
+            </Border>
+            <Grid Name="BoardGrid" Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" Margin="10,40,10,40" />
+            <Grid Grid.Column="2" Name="Stats" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Viewbox>
+                    <TextBlock Text="Stats" Margin="10"/>
+                </Viewbox>
+                <Viewbox Grid.Row="1">
+                    <TextBlock Name="Accuracy" Text="0%" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7"/>
+                </Viewbox>
+                <Viewbox Grid.Row="2">
+                    <TextBlock Name="NumberHit" Text="0/0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7"/>
+                </Viewbox>
+            </Grid>
+            <Grid Name="WinGrid" Grid.Column="0" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Victory" TextWrapping="Wrap" TextAlignment="Center" Margin="10"/>
+                </Viewbox>
+                <Button Grid.Row="1" FontSize="30" Margin="20" Visibility="Visible" Click="MainMenu_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/button.jpg" Stretch="UniformToFill"/>
+                    </Button.Background>
+                    <Viewbox>
+                        <TextBlock Text="Main Menu" Margin="10" Foreground="White"/>
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
