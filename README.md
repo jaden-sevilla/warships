@@ -1,4 +1,4 @@
-# Warship
+# Warships
 Warship code from my Computer Science lesson, but improved with a GUI. Has a main menu screen and sound effects!
 ## Example
 ![WarshipsWPF_JV6VbolKTT](https://github.com/user-attachments/assets/385b5a32-0854-4c21-ac38-e31277d1ee81)
